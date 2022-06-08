@@ -16,6 +16,9 @@ import co.edu.study.comm.Command;
 import co.edu.study.home.HomeCommand;
 import co.edu.study.notice.command.NoticeSelect;
 import co.edu.study.notice.command.NoticeSelectList;
+import co.edu.study.student.command.Login;
+import co.edu.study.student.command.LoginForm;
+import co.edu.study.student.command.Logout;
 
 //바깥에서 들어오는 모든것은 *.do가 처리함
 @WebServlet("*.do")
@@ -37,6 +40,9 @@ public class FrontController extends HttpServlet {
 		// new 다음에 적는 커맨드의 앞자리는 항상 대문자로 만들어야함
 		map.put("/noticeSelectList.do", new NoticeSelectList()); // 공지사항목록보는곳
 		map.put("/noticeSelect.do", new NoticeSelect()); // 세부내역보기
+		map.put("/loginForm.do", new LoginForm()); // 로그인폼
+		map.put("/login.do", new Login()); // 로그인처리
+		map.put("/logout.do", new Logout()); // 로그아웃처리
 	}
 
 	

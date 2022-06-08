@@ -20,5 +20,6 @@
   </environments>
   <mappers>
      <mapper resource="co/edu/study/notice/service/notice-map.xml"/>
+     <mapper resource="co/edu/study/student/service/student-map.xml"/>
   </mappers>
 </configuration>
