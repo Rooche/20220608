@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.edu.study.notice.service.NoticeMapper">
+	<!--인터페이스 이름(NoticeMapper)으로 바꾼거임-->
+	
+	
+	<select id="noticeSelectList" resultType="co.edu.study.notice.vo.NoticeVO">
+		SELECT * FROM NOTICE ORDER BY ID DESC
+	</select>
+
+	<select id="noticeSearchtList" resultType="co.edu.study.notice.vo.NoticeVO">
+		SELECT * FROM NOTICE
+		WHERE
+			<if test="key == 1"> 1 = 1 </if>
+			<if test="key == 2"> TITLE LIKE '%'|| #{val} || '%' </if>
+			<!--타이틀에 어떤 글자가 오든 {val} 내용이 포함되어있으면 들고온다-->
+			<if test="key == 3"> SUBJECT LIKE '%'|| #{val} || '%' </if>
+	</select>
+
+	<select id="noticeSelect" parameterType="co.edu.study.notice.vo.NoticeVO"
+				resultType="co.edu.study.notice.vo.NoticeVO">
+			SELECT * FROM NOTICE WHERE ID = #{id}	
+	</select>
+	<!--select는 파라메터 없어도 됨-->
+	
+
+	<insert id="noticeInsert" parameterType="co.edu.study.notice.vo.NoticeVO">
+		INSERT INTO NOTICE
+		VALUES(B_ID.NEXTVAL, #(writer), #(title), #(subject), #(wdate), 0)
+		<!--ID가 nextval이다-->
+	</insert>
+
+
+	<update id="noticeUpdate" parameterType="co.edu.study.notice.vo.NoticeVO">
+		UPDATE NOTICE
+		<!--업데이트는 set으로 구성함-->
+		<set>
+			<if test="writer != null">WRITER = #{writer},</if>
+			<if test="title != null">TITLE = #{title},</if>
+			<if test="subject != null">SUBJECT = #{subject},</if>
+			<if test="wdate != null">WDATE = #{wdate},</if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+
+
+	<delete id="noticeDelete" parameterType="co.edu.study.notice.vo.NoticeVO">
+		DELETE FROM NOTICE FROM ID = #{id}
+	</delete>
+
+
+	<update id="noticeHitUpdate" parameterType="int">
+	<!--여긴 하나밖에없어서 set을 이렇게 씀-->
+		UPDATE NOTICE SET HIT = HIT + 1 WHERE ID = #{id}
+	</update>
+</mapper>
