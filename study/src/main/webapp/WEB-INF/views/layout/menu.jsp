@@ -14,16 +14,16 @@
 			<br />
 		</div>
 		<div>
-			<!-- 메뉴부분  로그인하면 로그아웃이 보이게 바꿨음-->
+			<!-- 메뉴부분 -->
 			<ul>
 				<li><a class="active" href="home.do">Home</a></li>
 				<c:choose>
-					<c:when test="${empty id }" >
+					<c:when test="${empty id }">
 						<li><a href="loginForm.do">Login</a></li>
-						<li><a href="">Join</a></li>
+						<li><a href="#">Join</a></li>
 					</c:when>
 					<c:otherwise>
-					<li><a href="">LogOut</a></li>
+						<li><a href="logout.do">LogOut</a></li>
 					</c:otherwise>
 				</c:choose>
 				<li><a href="noticeSelectList.do">Notice</a></li>

@@ -34,8 +34,8 @@ public class FrontController extends HttpServlet {
 
     
 	 //요청과 처리 명령어를 연결하는 부분
-	public void init(ServletConfig config) throws ServletException {
-		map.put("/home.do", new HomeCommand()); // 첫번재 페이지. 홈페이지
+	public void init(ServletConfig config) throws ServletException { // init은 초기화한다는 뜻이다.
+		map.put("/home.do", new HomeCommand()); // 첫번재 페이지. 홈페이지 || home.do를 불러온다는건 homecommand라는 자식객체를 불러온다는것
 		// new 다음에 적는 커맨드는 안만들어져있어서 만들어줘야함
 		// new 다음에 적는 커맨드의 앞자리는 항상 대문자로 만들어야함
 		map.put("/noticeSelectList.do", new NoticeSelectList()); // 공지사항목록보는곳

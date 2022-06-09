@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div align="center">
-	<div><h1>WellCome To My Home</h1></div>
-
-</div>
+	<div align="center">
+		<div>
+			<h1>WellCome to My Web Site</h1>
+		</div>
+	</div>
 </body>
 </html>

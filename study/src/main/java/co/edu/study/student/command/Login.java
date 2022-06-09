@@ -23,8 +23,8 @@ public class Login implements Command {
 		if(vo != null) {
 			session.setAttribute("id", vo.getStudentId()); //아이디
 			session.setAttribute("name", vo.getName()); //사용자이름
-			session.setAttribute("author", vo.getAuthor()); //사용자권한
-			request.setAttribute("message", vo.getName()+"님 환영합니다.");
+			session.setAttribute("author", vo.getAuthor()); //사용자권한 , || session은 브라우저가 꺼져야 데이터가 사라지기에 로그인할때 사용한다.
+			request.setAttribute("message", vo.getName()+"님 환영합니다."); // request는 페이지가 바뀌면 데이터가 사라지기때문에 이렇게 썼고
 		} else {
 			request.setAttribute("message", "아이디 또는 패스워드가 일치하지 않습니다.");
 		}

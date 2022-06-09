@@ -6,58 +6,76 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-tr.row:hover {
-	background-color: yellow;
-}
-</style>
-
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
 </head>
 <body>
-	<div align="center">
-		<div>
-			<h1>공지사항 목록</h1>
-		</div>
-		<div>
-			<table border="1">
-				<thead>
-					<tr>
-						<th width="100">글번호</th>
-						<th width="150">작성자</th>
-						<th width="200">제 목</th>
-						<th width="150">작성일자</th>
-						<th width="100">조회수</th>
-					</tr>
-				</thead>
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+		<h1 class="h3 mb-2 text-gray-800">공지사항</h1>
+		<p class="mb-4">
+			DataTables is a third party plugin that is used to generate the demo
+			table below. For more information about DataTables, please visit the
+			<a target="_blank" href="https://datatables.net">official
+				DataTables documentation</a>.
+		</p>
 
-				<tbody>
-					<c:forEach items="${notices }" var="notice">
-						<tr class="row" onclick="noticeSelect(${notice.id})">
-							<td align="center">${notice.id }</td>
-							<td align="center">${notice.writer }</td>
-							<td>${notice.title }</td>
-							<td align="center">${notice.wdate }</td>
-							<td align="center">${notice.hit }</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div><br/>
+		<!-- DataTales Example -->
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">공지사항 목록</h6>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%"
+						cellspacing="0">
+						<thead>
+							<tr>
+								<th>글번호</th>
+								<th>작성자</th>
+								<th>제 목</th>
+								<th>작성일자</th>
+								<th>조회수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${notices }" var="n">
+								<tr>
+									<td>${n.id }</td>
+									<td>${n.writer }</td>
+									<td>${n.title }</td>
+									<td>${n.wdate }</td>
+									<td>${n.hit }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 		<div>
 			<form id="frm" action="noticeSelect.do" method="post">
 				<input type="hidden" id="id" name="id">
 			</form>
 		</div>
-		<div>
-			<button type="button" onclick="location.href='home.do'">홈으로 돌아가기</button>
-		</div>
 	</div>
 	<script type="text/javascript">
-	function noticeSelect(id){
-	//	location.href = "noticeSelect.do?id="+id;
-		frm.id.value = id;
-		frm.submit();
-	}	
+		function noticeSelect(id) {
+			//		location.href = "noticeSelect.do?id="+id;
+			frm.id.value = id;
+			frm.submit();
+		}
 	</script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="js/demo/datatables-demo.js"></script>
 </body>
 </html>
