@@ -7,19 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- Custom styles for this page -->
-<link href="vendor/datatables/dataTables.bootstrap4.min.css"
-	rel="stylesheet">
+<!-- <link href="vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet"> -->
 </head>
 <body>
 	<!-- Begin Page Content -->
 	<div class="container-fluid">
 		<h1 class="h3 mb-2 text-gray-800">공지사항</h1>
-		<p class="mb-4">
-			DataTables is a third party plugin that is used to generate the demo
-			table below. For more information about DataTables, please visit the
-			<a target="_blank" href="https://datatables.net">official
-				DataTables documentation</a>.
-		</p>
 
 		<!-- DataTales Example -->
 		<div class="card shadow mb-4">
@@ -37,6 +31,7 @@
 								<th>제 목</th>
 								<th>작성일자</th>
 								<th>조회수</th>
+								<th>블랙리스트 여부<th>
 							</tr>
 						</thead>
 						<tbody>
@@ -47,6 +42,9 @@
 									<td>${n.title }</td>
 									<td>${n.wdate }</td>
 									<td>${n.hit }</td>
+									<td>
+								<input type='button' value='추가' onclick='' />
+								</td>
 								</tr>
 							</c:forEach>
 						</tbody>
